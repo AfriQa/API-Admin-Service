@@ -33,7 +33,7 @@
     "typescript": "^4.0.3"
   },
   "dependencies": {
-    "@types/faker": "^5.1.0",
+    "@types/faker": "^5.1.2",
     "@types/jest": "^26.0.14",
     "@types/mongoose": "^5.7.36",
     "apollo-server-express": "^2.17.0",
