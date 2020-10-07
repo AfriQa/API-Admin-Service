@@ -10,7 +10,8 @@ const app = express()
 const server = new ApolloServer({
     schema,
     validationRules: [depthLimit(7)],
-    introspection: true
+    introspection: true,
+    playground: true
 })
 
 app.use('*', cors())
