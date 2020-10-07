@@ -42,6 +42,8 @@
     "express": "^4.17.1",
     "faker": "^5.1.0",
     "graphql": "^15.3.0",
+    "graphql-depth-limit": "^1.1.0",
+    "graphql-import-node": "0.0.4",
     "http": "^0.0.1-security",
     "jest": "^26.4.2",
     "mongoose": "^5.10.6",
