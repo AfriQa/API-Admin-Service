@@ -1,4 +1,4 @@
-// import "graphql-import-node"
+import "graphql-import-node"
 import typeDefs from "./schema/index"
 import resolvers from "./resolvers/resolvers"
 import { GraphQLSchema } from "graphql"
