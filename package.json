@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": { 
     "start": "node './dist/server.js'",
-    "build": "tsc -p . && ncp src/schema dist/schema",
+    "local:build": "tsc -p . && ncp src/schema dist/schema",
+    "build": "tsc",
     "start:dev": "yarn run build:dev",
     "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
     "test": "jest --testEnvironment=node --runInBand",
