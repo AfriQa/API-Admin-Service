@@ -1,3 +1,3 @@
-import UserResolver from "./User"
+import UserResolver from "./User/index"
 
 export default [UserResolver]
