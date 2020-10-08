@@ -12,7 +12,7 @@ const server = new ApolloServer({
     validationRules: [depthLimit(7)],
     introspection: true,
     playground: true
-})
+}) 
 
 app.use('*', cors())
 app.use(compression())
