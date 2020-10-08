@@ -18,6 +18,8 @@ app.use('*', cors())
 app.use(compression())
 server.applyMiddleware({ app, path: '/graphql' })
 
+app.get("/", (_, res) => res.send("Working"))
+
 const httpServer = createServer(app)
 httpServer.listen(
     { port: process.env.PORT || 4000 },
