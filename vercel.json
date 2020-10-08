@@ -1,4 +1,5 @@
 {
+  "builds": [{ "src": "/dist/server.js", "use": "@now/node" }],
   "routes": [
    { "src": "/", "dest": "/dist/server.js" },
    { "src": "/graphql", "dest": "/dist/server.js" }
