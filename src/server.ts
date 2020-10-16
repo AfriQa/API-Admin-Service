@@ -12,7 +12,7 @@ const server = new ApolloServer({
     validationRules: [depthLimit(7)],
     introspection: true,
     playground: true
-}) 
+})
 
 app.use('*', cors())
 app.use(compression())
@@ -24,6 +24,7 @@ const httpServer = createServer(app)
 httpServer.listen(
     { port: process.env.PORT || 4000 },
     (): void => {
+        // tslint:disable-next-line: no-console
         console.log(`\n🚀 GraphQL is now running on http://localhost:4000/graphql`)
     }
 )
