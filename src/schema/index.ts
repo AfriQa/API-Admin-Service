@@ -1,4 +1,4 @@
-import * as basicDefs from "./schema.graphql"
-import * as userDefs from "./User/user.graphql"
+import basicDefs from "./schema"
+import userDefs from "./User/user"
 
 export default [basicDefs, userDefs]
