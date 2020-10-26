@@ -13,6 +13,10 @@
     "test:watch": "jest --watchAll --testEnvironment=node",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
+  "engines": {
+    "node": "12.18.3",
+    "yarn": "1.22.4"
+  },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
