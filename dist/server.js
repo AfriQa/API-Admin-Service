@@ -14,12 +14,14 @@ var app = express_1.default();
 var server = new apollo_server_express_1.ApolloServer({
     schema: schema_1.default,
     validationRules: [graphql_depth_limit_1.default(7)],
-    introspection: true
+    introspection: true,
+    playground: true
 });
 app.use('*', cors_1.default());
 app.use(compression_1.default());
 server.applyMiddleware({ app: app, path: '/graphql' });
+app.get("/", function (_, res) { return res.send("Working"); });
 var httpServer = http_1.createServer(app);
-httpServer.listen({ port: 4000 }, function () {
+httpServer.listen({ port: process.env.PORT || 4000 }, function () {
     console.log("\n\uD83D\uDE80 GraphQL is now running on http://localhost:4000/graphql");
 });

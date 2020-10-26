@@ -1,18 +1,33 @@
 import { IResolvers } from "graphql-tools"
-import * as faker from "faker"
+import fetchUsers from "./fetchUsers"
+import postUser from "./postUser"
+import editUser from "./editUser"
+import removeUser from "./removeUser"
 
-const resolverMap: IResolvers = {
+const UserResolver : IResolvers = {
     Query: {
-        users: () => {
-            return Array((Math.floor(Math.random() * 10) + 1)).fill("").map(() => ({
-                _id: faker.internet.ipv6(),
-                firstName: faker.name.firstName(),
-                lastName: faker.name.lastName(),
-                phoneNumber: faker.phone.phoneNumber(),
-                email: faker.internet.email()
-            }))
+        async fetchAdminUsers() {
+            const result = await fetchUsers()
+            return result
+        }
+    },
+
+    Mutation: {
+        async postAdminUser(_: any, prop: any) {
+            const result = await postUser(prop.adminUserInput)
+            return result
+        },
+
+        async editAdminUser(_: any, prop: any) {
+            const result = await editUser(prop.adminUserInput)
+            return result
+        },
+
+        async removeAdminUser(_: any, prop: any) {
+            const result = await removeUser(prop._id)
+            return result
         }
     }
 }
 
-export default resolverMap
+export default UserResolver
