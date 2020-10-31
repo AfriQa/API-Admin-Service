@@ -18,6 +18,8 @@ type Customer {
     email: String
     location: String
     phoneNumber: String
+    quantityPurchased: Int
+    totalAmount: Float
     createdAt: String
     updatedAt: String
 }
@@ -29,6 +31,8 @@ type CustomerDoc {
     email: String
     location: String
     phoneNumber: String
+    quantityPurchased: Int
+    totalAmount: Float
     createdAt: String
     updatedAt: String
     error: Error
@@ -40,6 +44,8 @@ input CustomerInput {
     email: String!
     location: String!
     phoneNumber: String!
+    quantityPurchased: Int!
+    totalAmount: Float!
 }
 
 input CustomerInputEdit {

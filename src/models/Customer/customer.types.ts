@@ -8,6 +8,8 @@ export interface ICustomer {
     email: string
     phoneNumber: string
     location: string
+    quantityPurchased: number
+    totalAmount: number
     createdAt?: Date
     updatedAt?: Date
 }
@@ -19,6 +21,8 @@ export interface ICustomerDoc {
     email: string
     phoneNumber: string
     location: string
+    quantityPurchased: number
+    totalAmount: number
     createdAt?: Date
     updatedAt?: Date
 }
