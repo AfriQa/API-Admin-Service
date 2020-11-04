@@ -1,0 +1,6 @@
+language: node_js
+node_js:
+    - "12"
+script:
+    - echo '***Build Starts***'
+    - yarn build
