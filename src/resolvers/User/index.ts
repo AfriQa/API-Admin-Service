@@ -1,5 +1,6 @@
 import { IResolvers } from "graphql-tools"
 import fetchUsers from "./fetchUsers"
+import fetchUserByID from "./fetchUserByID"
 import postUser from "./postUser"
 import editUser from "./editUser"
 import removeUser from "./removeUser"
@@ -8,6 +9,11 @@ const UserResolver : IResolvers = {
     Query: {
         async fetchAdminUsers() {
             const result = await fetchUsers()
+            return result
+        },
+
+        async fetchAdminUserByID(_: any, prop: any) {
+            const result = await fetchUserByID(prop._id)
             return result
         }
     },

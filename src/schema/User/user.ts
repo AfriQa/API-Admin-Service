@@ -4,6 +4,7 @@ export default gql`
 
 extend type Query {
     fetchAdminUsers: [AdminUserDoc!]
+    fetchUserByID(_id: String!): AdminUserDoc
 }
 
 extend type Mutation {
