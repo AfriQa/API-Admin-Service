@@ -13,8 +13,7 @@ const UserResolver : IResolvers = {
         },
 
         async fetchAdminUserByID(_: any, prop: any) {
-            const result = await fetchUserByID(prop._id)
-            return result
+            return await fetchUserByID(prop._id)
         }
     },
 
