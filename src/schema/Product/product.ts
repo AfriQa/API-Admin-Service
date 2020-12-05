@@ -21,6 +21,7 @@ type AdminProduct {
     productDiscount: Float
     productCategory: String
     productImages: [String]
+    salesCount: Int
     createdAt: String
     updatedAt: String
 }
@@ -35,6 +36,7 @@ type AdminProductDoc {
     productDiscount: Float
     productCategory: String
     productImages: [String]
+    salesCount: Int
     createdAt: String
     updatedAt: String
     error: Error

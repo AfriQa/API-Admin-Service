@@ -25,6 +25,9 @@ const UserSchema = new Schema({
     productImages: [
         { type: String, unique: false }
     ],
+    salesCount: {
+        type: Number, unique: false, default: 0
+    },
     createdAt: {
         type: Date, unique: false, default: new Date()
     },

@@ -23,6 +23,7 @@ connect()
 app.get("/", (_, res) => res.send("Working"))
 
 const httpServer = createServer(app)
+server.installSubscriptionHandlers(httpServer)
 httpServer.listen(
     { port: process.env.PORT || 4000 },
     (): void => {

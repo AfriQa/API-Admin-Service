@@ -11,6 +11,7 @@ export interface IProduct {
     productDiscount: number
     productCategory: string
     productImages: string[]
+    salesCount: number
     createdAt?: Date
     updatedAt?: Date
 }
@@ -25,6 +26,7 @@ export interface IProductDoc {
     productDiscount: number
     productCategory: string
     productImages: string[]
+    salesCount: number
     createdAt?: Date
     updatedAt?: Date
 }

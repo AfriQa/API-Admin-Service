@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts": { 
+  "scripts": {
     "start": "node './dist/server.js'",
     "local:build": "tsc -p . && ncp src/schema dist/schema",
     "build": "tsc",

@@ -13,4 +13,8 @@ export default gql`
     type Mutation {
         _: String!
     }
+
+    type Subscription {
+        _: String!
+    }
 `
