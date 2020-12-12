@@ -39,6 +39,7 @@ export interface IOrderUpdateInput {
 export interface IOrderInputDetail {
     address: Address
     totalDistance: number
+    deliveryPerson: string
 }
 
 export interface IOrderInput {

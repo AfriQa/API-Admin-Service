@@ -16,7 +16,7 @@ extend type Mutation {
 
 extend type Subscription {
     orderCreated: AdminOrderDoc
-    orderUpdated(_id: String!): AdminOrderUpdate
+    orderUpdated(ids: [String!]): AdminOrderUpdate
 }
 
 type AdminOrderDoc {
@@ -41,6 +41,7 @@ type AdminOrderInfo {
     totalDistance: Float
     orderedTime: String
     estimatedDeliveryTime: String
+    deliveryPerson: String
 }
 
 type AdminOrderAddress {
@@ -84,6 +85,7 @@ input AdminOrderUpdateInput {
 input AdminOrderDetail {
     address: AdminAddressInput!
     totalDistance: Float!
+    deliveryPerson: String
 }
 
 input AdminAddressInput {

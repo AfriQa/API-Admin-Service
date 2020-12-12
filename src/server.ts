@@ -25,7 +25,7 @@ app.get("/", (_, res) => res.send("Working"))
 const httpServer = createServer(app)
 server.installSubscriptionHandlers(httpServer)
 httpServer.listen(
-    { port: process.env.PORT || 4000 },
+    { port: process.env.PORT || 4001 },
     (): void => {
         // tslint:disable-next-line: no-console
         console.log(`\n🚀 GraphQL is now running on http://localhost:4000/graphql`)
