@@ -39,44 +39,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var fetchUsers_1 = __importDefault(require("./fetchUsers"));
-var fetchUserByID_1 = __importDefault(require("./fetchUserByID"));
-var postUser_1 = __importDefault(require("./postUser"));
-var editUser_1 = __importDefault(require("./editUser"));
-var removeUser_1 = __importDefault(require("./removeUser"));
-var UserResolver = {
+var fetchCategories_1 = __importDefault(require("./fetchCategories"));
+var postCategory_1 = __importDefault(require("./postCategory"));
+var editCategory_1 = __importDefault(require("./editCategory"));
+var removeCategory_1 = __importDefault(require("./removeCategory"));
+var CategoryResolver = {
     Query: {
-        fetchAdminUsers: function () {
+        fetchAdminCategories: function () {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, fetchUsers_1.default()];
+                        case 0: return [4, fetchCategories_1.default()];
                         case 1:
                             result = _a.sent();
                             return [2, result];
-                    }
-                });
-            });
-        },
-        fetchAdminUserByID: function (_, prop) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4, fetchUserByID_1.default(prop._id)];
-                        case 1: return [2, _a.sent()];
                     }
                 });
             });
         }
     },
     Mutation: {
-        postAdminUser: function (_, prop) {
+        postAdminCategory: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, postUser_1.default(prop.adminUserInput, prop.authID)];
+                        case 0: return [4, postCategory_1.default(prop.adminCategoryInput)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -84,12 +73,12 @@ var UserResolver = {
                 });
             });
         },
-        editAdminUser: function (_, prop) {
+        editAdminCategory: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, editUser_1.default(prop.adminUserInput)];
+                        case 0: return [4, editCategory_1.default(prop.adminCategoryInput)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -97,12 +86,12 @@ var UserResolver = {
                 });
             });
         },
-        removeAdminUser: function (_, prop) {
+        removeAdminCategory: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, removeUser_1.default(prop._id)];
+                        case 0: return [4, removeCategory_1.default(prop._id)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -112,4 +101,4 @@ var UserResolver = {
         }
     }
 };
-exports.default = UserResolver;
+exports.default = CategoryResolver;

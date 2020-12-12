@@ -41,6 +41,7 @@
     "@types/faker": "^5.1.2",
     "@types/jest": "^26.0.14",
     "@types/mongoose": "^5.7.36",
+    "apollo-server": "^2.19.0",
     "apollo-server-express": "^2.17.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",

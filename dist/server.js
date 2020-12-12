@@ -10,6 +10,7 @@ var http_1 = require("http");
 var compression_1 = __importDefault(require("compression"));
 var cors_1 = __importDefault(require("cors"));
 var schema_1 = __importDefault(require("./schema"));
+var database_1 = require("./auth/database");
 var app = express_1.default();
 var server = new apollo_server_express_1.ApolloServer({
     schema: schema_1.default,
@@ -20,8 +21,10 @@ var server = new apollo_server_express_1.ApolloServer({
 app.use('*', cors_1.default());
 app.use(compression_1.default());
 server.applyMiddleware({ app: app, path: '/graphql' });
+database_1.connect();
 app.get("/", function (_, res) { return res.send("Working"); });
 var httpServer = http_1.createServer(app);
-httpServer.listen({ port: process.env.PORT || 4000 }, function () {
+server.installSubscriptionHandlers(httpServer);
+httpServer.listen({ port: process.env.PORT || 4001 }, function () {
     console.log("\n\uD83D\uDE80 GraphQL is now running on http://localhost:4000/graphql");
 });

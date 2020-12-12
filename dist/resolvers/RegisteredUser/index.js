@@ -39,19 +39,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var fetchUsers_1 = __importDefault(require("./fetchUsers"));
-var fetchUserByID_1 = __importDefault(require("./fetchUserByID"));
-var postUser_1 = __importDefault(require("./postUser"));
-var editUser_1 = __importDefault(require("./editUser"));
-var removeUser_1 = __importDefault(require("./removeUser"));
-var UserResolver = {
+var fetchRegisteredUsers_1 = __importDefault(require("./fetchRegisteredUsers"));
+var postRegisteredUser_1 = __importDefault(require("./postRegisteredUser"));
+var editRegisteredUser_1 = __importDefault(require("./editRegisteredUser"));
+var removeRegisteredUser_1 = __importDefault(require("./removeRegisteredUser"));
+var fetchRegisteredUserByID_1 = __importDefault(require("./fetchRegisteredUserByID"));
+var RegisteredUserResolver = {
     Query: {
-        fetchAdminUsers: function () {
+        fetchAdminRegisteredUsers: function () {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, fetchUsers_1.default()];
+                        case 0: return [4, fetchRegisteredUsers_1.default()];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -59,24 +59,27 @@ var UserResolver = {
                 });
             });
         },
-        fetchAdminUserByID: function (_, prop) {
+        fetchAdminRegisteredUserByID: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
+                var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, fetchUserByID_1.default(prop._id)];
-                        case 1: return [2, _a.sent()];
+                        case 0: return [4, fetchRegisteredUserByID_1.default(prop._id)];
+                        case 1:
+                            result = _a.sent();
+                            return [2, result];
                     }
                 });
             });
         }
     },
     Mutation: {
-        postAdminUser: function (_, prop) {
+        postAdminRegisteredUser: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, postUser_1.default(prop.adminUserInput, prop.authID)];
+                        case 0: return [4, postRegisteredUser_1.default(prop.adminRegisteredUserInput)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -84,12 +87,12 @@ var UserResolver = {
                 });
             });
         },
-        editAdminUser: function (_, prop) {
+        editAdminRegisteredUser: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, editUser_1.default(prop.adminUserInput)];
+                        case 0: return [4, editRegisteredUser_1.default(prop.adminRegisteredUserInput)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -97,12 +100,12 @@ var UserResolver = {
                 });
             });
         },
-        removeAdminUser: function (_, prop) {
+        removeAdminRegisteredUser: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, removeUser_1.default(prop._id)];
+                        case 0: return [4, removeRegisteredUser_1.default(prop._id)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -112,4 +115,4 @@ var UserResolver = {
         }
     }
 };
-exports.default = UserResolver;
+exports.default = RegisteredUserResolver;

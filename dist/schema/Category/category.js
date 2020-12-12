@@ -1,0 +1,9 @@
+"use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var apollo_server_express_1 = require("apollo-server-express");
+exports.default = apollo_server_express_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\nextend type Query {\n    fetchAdminCategories: [AdminCategoryDoc!]\n}\n\nextend type Mutation {\n    postAdminCategory(authID: String!, adminCategoryInput: AdminCategoryInput!): AdminCategoryDoc\n    editAdminCategory(authID: String!, adminCategoryInput: AdminCategoryInputEdit!): AdminCategoryDoc\n    removeAdminCategory(authID: String!, _id: String!): AdminCategoryDoc\n}\n\ntype AdminCategory {\n    name: String\n    createdAt: String\n    updatedAt: String\n}\n\ntype AdminCategoryDoc {\n    _id: String\n    name: String\n    createdAt: String\n    updatedAt: String\n    error: Error\n}\n\ninput AdminCategoryInput {\n    name: String!\n}\n\ninput AdminCategoryInputEdit {\n    _id: String!\n    name: String\n}\n\n"], ["\n\nextend type Query {\n    fetchAdminCategories: [AdminCategoryDoc!]\n}\n\nextend type Mutation {\n    postAdminCategory(authID: String!, adminCategoryInput: AdminCategoryInput!): AdminCategoryDoc\n    editAdminCategory(authID: String!, adminCategoryInput: AdminCategoryInputEdit!): AdminCategoryDoc\n    removeAdminCategory(authID: String!, _id: String!): AdminCategoryDoc\n}\n\ntype AdminCategory {\n    name: String\n    createdAt: String\n    updatedAt: String\n}\n\ntype AdminCategoryDoc {\n    _id: String\n    name: String\n    createdAt: String\n    updatedAt: String\n    error: Error\n}\n\ninput AdminCategoryInput {\n    name: String!\n}\n\ninput AdminCategoryInputEdit {\n    _id: String!\n    name: String\n}\n\n"])));
+var templateObject_1;

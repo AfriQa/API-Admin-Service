@@ -39,19 +39,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var fetchUsers_1 = __importDefault(require("./fetchUsers"));
-var fetchUserByID_1 = __importDefault(require("./fetchUserByID"));
-var postUser_1 = __importDefault(require("./postUser"));
-var editUser_1 = __importDefault(require("./editUser"));
-var removeUser_1 = __importDefault(require("./removeUser"));
-var UserResolver = {
+var fetchOrders_1 = __importDefault(require("./functions/fetchOrders"));
+var postOrder_1 = __importDefault(require("./functions/postOrder"));
+var editOrder_1 = __importDefault(require("./functions/editOrder"));
+var removeOrder_1 = __importDefault(require("./functions/removeOrder"));
+var fetchOrderByID_1 = __importDefault(require("./functions/fetchOrderByID"));
+var updateOrderStatus_1 = __importDefault(require("./functions/updateOrderStatus"));
+var apollo_server_1 = require("apollo-server");
+var orderStatus_1 = __importDefault(require("../../constants/orderStatus"));
+var pubsub = new apollo_server_1.PubSub();
+var OrderResolver = {
     Query: {
-        fetchAdminUsers: function () {
+        fetchAdminOrders: function () {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, fetchUsers_1.default()];
+                        case 0: return [4, fetchOrders_1.default()];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -59,24 +63,43 @@ var UserResolver = {
                 });
             });
         },
-        fetchAdminUserByID: function (_, prop) {
+        fetchAdminOrderByID: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
+                var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, fetchUserByID_1.default(prop._id)];
-                        case 1: return [2, _a.sent()];
+                        case 0: return [4, fetchOrderByID_1.default(prop._id)];
+                        case 1:
+                            result = _a.sent();
+                            return [2, result];
                     }
                 });
             });
         }
     },
     Mutation: {
-        postAdminUser: function (_, prop) {
+        postAdminOrder: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, postUser_1.default(prop.adminUserInput, prop.authID)];
+                        case 0: return [4, postOrder_1.default(prop.AdminOrderInput)];
+                        case 1:
+                            result = _a.sent();
+                            return [4, pubsub.publish(orderStatus_1.default.ORDER_CREATED, { orderCreated: result })];
+                        case 2:
+                            _a.sent();
+                            return [2, result];
+                    }
+                });
+            });
+        },
+        editAdminOrder: function (_, prop) {
+            return __awaiter(this, void 0, void 0, function () {
+                var result;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4, editOrder_1.default(prop.AdminOrderInput)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -84,12 +107,12 @@ var UserResolver = {
                 });
             });
         },
-        editAdminUser: function (_, prop) {
+        removeAdminOrder: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, editUser_1.default(prop.adminUserInput)];
+                        case 0: return [4, removeOrder_1.default(prop._id)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -97,19 +120,33 @@ var UserResolver = {
                 });
             });
         },
-        removeAdminUser: function (_, prop) {
+        updateOrderStatus: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, removeUser_1.default(prop._id)];
+                        case 0: return [4, updateOrderStatus_1.default(prop.AdminOrderUpdate)];
                         case 1:
                             result = _a.sent();
+                            return [4, pubsub.publish(orderStatus_1.default.ORDER_CHANGED, { orderUpdated: result })];
+                        case 2:
+                            _a.sent();
                             return [2, result];
                     }
                 });
             });
         }
+    },
+    Subscription: {
+        orderCreated: {
+            subscribe: function () { return pubsub.asyncIterator([orderStatus_1.default.ORDER_CREATED]); },
+        },
+        orderUpdated: {
+            subscribe: apollo_server_1.withFilter(function () { return pubsub.asyncIterator(orderStatus_1.default.ORDER_CHANGED); }, function (payload, variables) {
+                var index = variables.ids.findIndex(function (id) { return String(id) === String(payload.orderUpdated._id); });
+                return index >= 0;
+            }),
+        },
     }
 };
-exports.default = UserResolver;
+exports.default = OrderResolver;

@@ -39,44 +39,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var fetchUsers_1 = __importDefault(require("./fetchUsers"));
-var fetchUserByID_1 = __importDefault(require("./fetchUserByID"));
-var postUser_1 = __importDefault(require("./postUser"));
-var editUser_1 = __importDefault(require("./editUser"));
-var removeUser_1 = __importDefault(require("./removeUser"));
-var UserResolver = {
+var fetchShops_1 = __importDefault(require("./fetchShops"));
+var postShop_1 = __importDefault(require("./postShop"));
+var editShop_1 = __importDefault(require("./editShop"));
+var removeShop_1 = __importDefault(require("./removeShop"));
+var ShopResolver = {
     Query: {
-        fetchAdminUsers: function () {
+        fetchAdminShops: function () {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, fetchUsers_1.default()];
+                        case 0: return [4, fetchShops_1.default()];
                         case 1:
                             result = _a.sent();
                             return [2, result];
-                    }
-                });
-            });
-        },
-        fetchAdminUserByID: function (_, prop) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4, fetchUserByID_1.default(prop._id)];
-                        case 1: return [2, _a.sent()];
                     }
                 });
             });
         }
     },
     Mutation: {
-        postAdminUser: function (_, prop) {
+        postAdminShop: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, postUser_1.default(prop.adminUserInput, prop.authID)];
+                        case 0: return [4, postShop_1.default(prop.adminShopInput)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -84,12 +73,12 @@ var UserResolver = {
                 });
             });
         },
-        editAdminUser: function (_, prop) {
+        editAdminShop: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, editUser_1.default(prop.adminUserInput)];
+                        case 0: return [4, editShop_1.default(prop.adminShopInput)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -97,12 +86,12 @@ var UserResolver = {
                 });
             });
         },
-        removeAdminUser: function (_, prop) {
+        removeAdminShop: function (_, prop) {
             return __awaiter(this, void 0, void 0, function () {
                 var result;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, removeUser_1.default(prop._id)];
+                        case 0: return [4, removeShop_1.default(prop._id)];
                         case 1:
                             result = _a.sent();
                             return [2, result];
@@ -112,4 +101,4 @@ var UserResolver = {
         }
     }
 };
-exports.default = UserResolver;
+exports.default = ShopResolver;
